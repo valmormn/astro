@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon'
+
 export interface Props {
 	title: string;
 }
@@ -14,10 +16,23 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="sitemap" href="/sitemap-index.xml">
+
 		<title>{title}</title>
 	</head>
 	<body>
+		<header class="nav">
+			<Icon name="ic:round-menu" class="" />
+			<h1>{title}</h1>
+			<Icon name="ic:round-person" class="" />
+		</header>
 		<slot />
+		<footer>
+			<p>
+				<a href="">Astro</a> is a new kind of static site builder.
+			</p>
+		</footer>
+		
 	</body>
 </html>
 <style is:global>
@@ -33,4 +48,18 @@ const { title } = Astro.props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+	.nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin: 0 auto;
+		/* padding: 1rem; */
+		background-color: #fff;
+		box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+	}
+	[astro-icon] {
+        color: red;
+				height: 2rem;
+    }
 </style>
